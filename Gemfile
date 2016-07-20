@@ -14,6 +14,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'simple_form'
 gem 'sprockets', '2.11.0'
 gem 'sass-rails'
 # Use CoffeeScript for .js.coffee assets and views
