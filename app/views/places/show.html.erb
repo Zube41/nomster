@@ -118,7 +118,7 @@
 
 <h1>Photos</h1>
 
-<% @place.photo.each do |photo| %>
+<% @place.photos.each do |photo| %>
   <%= image_tag photo.picture %>
   <%= photo.caption %>
 <% end %>
