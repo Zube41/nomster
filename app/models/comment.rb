@@ -16,7 +16,7 @@ class Comment < ActiveRecord::Base
   end
 
   def send_comment_email
-    
+    if place.user
       NotificationMailer.comment_added(self).deliver
     end
   end
