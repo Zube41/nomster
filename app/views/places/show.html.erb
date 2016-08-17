@@ -56,7 +56,7 @@
 
 
 
-<!-- Modal -->
+<!-- Modal Comment-->
 <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -79,12 +79,35 @@
   </div>
 </div>
 
+<!-- Modal Photo-->
+<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="photoModalLabel">Comment</h4>
+      </div>
+  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <div class="modal-body">
+    <%= f.input :caption %>
+    <%= f.input :picture %>
+    </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit 'Upload a Photo' , class: 'btn btn-primary' %>
+        </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Button Comment-->
 <div class="col-xs-10 col-xs-offset-1">
-<h1 class="pull-left">Comments</h1>
-<!-- Button trigger modal -->
-<button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#commentModal">
-  Add a comment
-</button>
+  <h1 class="pull-left">Comments</h1>
+  <!-- Button trigger modal -->
+  <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#commentModal">
+    Add a comment
+  </button>
 <div class="clear"></div>
 </div>
 
@@ -100,44 +123,23 @@
   </div>
 <% end %>
 
-
-
-<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="photoModalLabel">Comment</h4>
-      </div>
-  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-    <div class="modal-body">
-    <%= f.input :caption %>
-    <%= f.input :picture %>
-    </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <%= f.submit 'Upload a Photo' , class: 'btn btn-primary' %>
- </div>
-    <% end %>
-    </div>
-  </div>
-</div>
-
-
+<!-- Button Photo-->
 <div class="col-xs-10 col-xs-offset-1">
-<h1 class="pull-left">Photos</h1>
-<button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#photomodal">
+  <h1 class="pull-left">Photos</h1>
+  <!-- Button trigger modal -->
+  <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#photomodal">
     Upload a Photo
   </button>
+<div class="clear"></div>
 </div>
 
-<div class="clear"></div>
-<div class="pull-left"
+  
 <% @place.photos.each do |photo| %>
   <div class="col-xs-12 col-sm-6">
     <%= image_tag photo.picture %>
-    <%= photo.inspect %>
-
+    <blockquote>
+      <%= photo.caption %>
+    </blockquote>
   </div
 <% end %>
 
